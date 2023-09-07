@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Montserrat, Roboto_Mono } from "next/font/google"
 import Image from "next/image"
@@ -6,6 +6,7 @@ import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { Code, ImageIcon, LayoutDashboard, MessageSquare, Music, Settings, VideoIcon } from "lucide-react"
+import { useEffect, useState } from "react";
 
 const montserrat = Roboto_Mono({ weight: "600", subsets: ["latin"]})
 
@@ -55,6 +56,16 @@ const routes = [
 
 
 const Sidebar = () => {
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, [])
+
+    if (!isMounted) {;
+        return null
+    }
+
   return (
     <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
         <div className="px-3 py-2 flex-1">
